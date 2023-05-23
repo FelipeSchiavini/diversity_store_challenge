@@ -9,7 +9,7 @@ datasource db {
 
 model User {
   id       String @id @default(uuid())
-  login    String
+  login    String @unique()
   password String
   role     String @default("client")
 
@@ -21,11 +21,16 @@ model Product {
   name       String @unique()
   productUrl String
   price      Float
+
+  StockMovements StockMovements[]
 }
 
 model StockMovements {
-  id       String @id @default(uuid())
-  userId   String
-  quantity Int    @default(0)
-  product  User   @relation(fields: [userId], references: [id])
+  id        String @id @default(uuid())
+  quantity  Int    @default(0)
+  userId    String
+  productId String
+
+  user    User    @relation(fields: [userId], references: [id])
+  product Product @relation(fields: [productId], references: [id])
 }
