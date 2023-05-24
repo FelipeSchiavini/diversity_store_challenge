@@ -20,10 +20,10 @@ export class UserController {
 	@Post('/create-admin')
 	async createAdmin(@Body() input: Omit<User, 'id' | 'role'>) {}
 
-	@Authorized('user')
 	@Post('/login')
-	async login(@Body() input: { login: string; password: string }) {
-		const { login, password } = userLoginParser(input);
+	async login(@Body() input: {data: { login: string; password: string }}) {
+		console.log("🚀 ~ file: user.controller.ts:26 ~ UserController ~ login ~ password:", input)
+		const { login, password } = userLoginParser(input.data);
 
 		const user = await getUserByLoginQuery(login);
 
@@ -42,6 +42,7 @@ export class UserController {
 				data: {
 					role: user.role,
 					sub: user.id,
+					login: user.login,
 				},
 			},
 			config.jwtSecret,

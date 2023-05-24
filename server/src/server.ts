@@ -12,6 +12,7 @@ const ServerInitialize = async () => {
 	server.use(express.json());
 
 	useExpressServer(server, {
+		cors: true,
 		controllers: [path.join(__dirname, 'app/controllers/**/*.ts')],
 		authorizationChecker: authorizationChecker,
 	});
