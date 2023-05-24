@@ -19,10 +19,6 @@ export const ProductList = () => {
   const { data, getRequest, isLoading } = useGet<Product[]>({
     onError: errorToast,
   })
-  console.log(
-    '🚀 ~ file: product-list.component.tsx:22 ~ ProductList ~ data:',
-    data,
-  )
 
   useEffect(() => {
     refresh()

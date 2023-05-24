@@ -6,9 +6,7 @@ export const SignIn = () => {
       <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-400">
         <User className="h-5 w-5 text-gray-500" />
       </div>
-      <p className="max-w-[140px] text-sm leading-snug">
-        Entre aproveite nossas promoções
-      </p>
+      <p className="max-w-[140px] text-sm leading-snug">enjoy our promotions</p>
     </div>
   )
 }

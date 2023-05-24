@@ -1047,11 +1047,11 @@ self.__RSC_MANIFEST={
   },
   "edgeSSRModuleMapping": {},
   "cssFiles": {
-    "/home/felipe/Documentos/comunikime/web/src/app/layout": [
-      "static/css/app/layout.css"
-    ],
     "/home/felipe/Documentos/comunikime/web/src/app/products/page": [
       "static/css/app/products/page.css"
+    ],
+    "/home/felipe/Documentos/comunikime/web/src/app/layout": [
+      "static/css/app/layout.css"
     ]
   },
   "clientModules": {
@@ -3135,27 +3135,6 @@ self.__RSC_MANIFEST={
       ],
       "async": false
     },
-    "/home/felipe/Documentos/comunikime/web/src/app/globals.css#": {
-      "id": "null",
-      "name": "default",
-      "chunks": [
-        "static/css/app/layout.css"
-      ]
-    },
-    "/home/felipe/Documentos/comunikime/web/node_modules/next/font/google/target.css?{\"path\":\"src/app/layout.tsx\",\"import\":\"Bai_Jamjuree\",\"arguments\":[{\"subsets\":[\"latin\"],\"weight\":\"700\",\"variable\":\"--font-bai-jamjuree\"}],\"variableName\":\"baiJamjuree\"}#": {
-      "id": "null",
-      "name": "default",
-      "chunks": [
-        "static/css/app/layout.css"
-      ]
-    },
-    "/home/felipe/Documentos/comunikime/web/node_modules/next/font/google/target.css?{\"path\":\"src/app/layout.tsx\",\"import\":\"Roboto_Flex\",\"arguments\":[{\"subsets\":[\"latin\"],\"variable\":\"--font-roboto\"}],\"variableName\":\"roboto\"}#": {
-      "id": "null",
-      "name": "default",
-      "chunks": [
-        "static/css/app/layout.css"
-      ]
-    },
     "/home/felipe/Documentos/comunikime/web/node_modules/react-toastify/dist/ReactToastify.css#": {
       "id": "null",
       "name": "default",
@@ -3234,6 +3213,27 @@ self.__RSC_MANIFEST={
         "app/products/page:static/chunks/app/products/page.js"
       ],
       "async": false
+    },
+    "/home/felipe/Documentos/comunikime/web/src/app/globals.css#": {
+      "id": "null",
+      "name": "default",
+      "chunks": [
+        "static/css/app/layout.css"
+      ]
+    },
+    "/home/felipe/Documentos/comunikime/web/node_modules/next/font/google/target.css?{\"path\":\"src/app/layout.tsx\",\"import\":\"Bai_Jamjuree\",\"arguments\":[{\"subsets\":[\"latin\"],\"weight\":\"700\",\"variable\":\"--font-bai-jamjuree\"}],\"variableName\":\"baiJamjuree\"}#": {
+      "id": "null",
+      "name": "default",
+      "chunks": [
+        "static/css/app/layout.css"
+      ]
+    },
+    "/home/felipe/Documentos/comunikime/web/node_modules/next/font/google/target.css?{\"path\":\"src/app/layout.tsx\",\"import\":\"Roboto_Flex\",\"arguments\":[{\"subsets\":[\"latin\"],\"variable\":\"--font-roboto\"}],\"variableName\":\"roboto\"}#": {
+      "id": "null",
+      "name": "default",
+      "chunks": [
+        "static/css/app/layout.css"
+      ]
     }
   }
 }

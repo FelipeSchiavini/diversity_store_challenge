@@ -65,14 +65,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   }
 
   return (
-    <div className="sm-max:w-full h-[370px] rounded border border-solid border-gray-600 bg-gray-800 p-3  sm:w-52">
+    <div className="h-[370px] w-52 justify-center rounded border border-solid border-gray-600 bg-gray-800 p-3">
       <Toast />
-      <div className="flex h-full flex-col  justify-between">
+      <div className="flex h-full  flex-col justify-between">
         <div className="space-y-3">
           <img
             src={productUrl}
             alt="product image"
-            className="h-32 w-52 rounded"
+            className="h-32 w-full rounded "
           />
           <p className="center font-bold text-gray-50">{name}</p>
           <p className="inline rounded bg-gray-100 p-1 text-sm leading-none text-gray-800">
@@ -81,7 +81,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         </div>
 
         <p className=" h-full pt-2 text-sm leading-4 text-gray-100">
-          {description.substring(0, 100).concat('...')}
+          {description.substring(0, 80).concat('...')}
         </p>
         <div className="w-full">
           <div className="mb-3 flex w-full cursor-pointer justify-around">

@@ -14,12 +14,12 @@ export const Profile = () => {
         className="h10 w-10 rounded-full"
       />
       <p className="max-w-[140px] text-sm leading-snug">
-        Olá {login}
+        Hello {login}
         <a
           href="/api/auth/logout"
           className="block text-red-400 hover:text-red-300"
         >
-          Quero sair
+          Sign Out
         </a>
       </p>
     </div>

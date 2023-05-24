@@ -17,11 +17,12 @@ model User {
 }
 
 model Product {
-  id             String           @id @default(uuid())
-  name           String           @unique()
-  productUrl     String
-  price          Float
-  description    String           @default("descrição do produto")
+  id          String @id @default(uuid())
+  name        String @unique()
+  productUrl  String
+  price       Float
+  description String @default("descrição do produto")
+
   StockMovements StockMovements[]
 }
 

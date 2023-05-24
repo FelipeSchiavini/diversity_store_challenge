@@ -3,6 +3,7 @@
 import { api } from '@/lib/api'
 import { useRouter } from 'next/navigation'
 import { FormEvent, useRef } from 'react'
+import { SignIn } from './sign-in.component'
 
 export const LoginFormComponent = () => {
   const router = useRouter()
@@ -65,7 +66,7 @@ export const LoginFormComponent = () => {
         type="submit"
         className="inline-block w-full self-end rounded bg-green-500 px-5 py-3 font-alt text-sm uppercase leading-none text-black hover:bg-green-600"
       >
-        Salvar
+        SignIn
       </button>
     </form>
   )

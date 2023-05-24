@@ -7,6 +7,7 @@ export const createProductMutation = async (input: Omit<Product, 'id'>): Promise
 			name: input.name,
 			price: input.price,
 			productUrl: input.productUrl,
+			description: input.description
 		},
 	});
 };
