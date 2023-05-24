@@ -1,4 +1,4 @@
-# ComuninikiME Challenge
+# ComunikiME Challenge
 
 ![Comuniniki-me](screenshot.png)
 
