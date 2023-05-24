@@ -1,42 +1,21 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { DecodedToken } from './lib/auth'
-import decode from 'jwt-decode'
+import { rootMiddleware } from './middleware/root-middleware'
+import { adminMiddleware } from './middleware/admin-middleware'
+import { productsMiddleware } from './middleware/products-middleware'
 
 export const middleware = (request: NextRequest) => {
   const token = request.cookies.get('token')?.value
-  if (!token) {
-    if (request.nextUrl.pathname === '/') {
-      return NextResponse.next()
-    }
-
-    return NextResponse.redirect(new URL('/', request.url), {
-      // httpOnly: turn cookie only accessible via the api
-      headers: {
-        'Set-Cookie': `Path=/; `,
-      },
-    })
-  }
-
-  const decodedToken: DecodedToken = decode(token)
 
   if (request.nextUrl.pathname === '/') {
-    if (decodedToken.data.role === 'client') {
-      return NextResponse.redirect(new URL('/products', request.url))
-    } else {
-      return NextResponse.redirect(new URL('/admin', request.url))
-    }
+    return rootMiddleware(request, token)
   }
 
-  if (
-    request.nextUrl.pathname.startsWith('/admin') &&
-    decodedToken.data.role === 'user'
-  ) {
-    return NextResponse.redirect(new URL('/', request.url), {
-      // httpOnly: turn cookie only accessible via the api
-      headers: {
-        'Set-Cookie': `Path=/`,
-      },
-    })
+  if (request.nextUrl.pathname.startsWith('/products')) {
+    return productsMiddleware(request, token)
+  }
+
+  if (request.nextUrl.pathname.startsWith('/admin')) {
+    return adminMiddleware(request, token)
   }
 
   return NextResponse.next()

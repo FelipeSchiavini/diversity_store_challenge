@@ -2,8 +2,8 @@ import { User } from '@prisma/client';
 import { UseCase } from './usecase.model';
 import { Service } from 'typedi';
 import { createUserMutation } from '../data/querys/create-user.mutation';
-import { Role } from '../../utils/@types/user.types';
-import { getUserByLoginQuery } from '../data/querys/get-user-by-login';
+import { Role } from '../../utils/@types/role.types';
+import { getUserByLoginQuery } from '../data/querys/get-user-by-login.query';
 import { UserAlreadyExistsError } from '../../utils/errors/errors';
 import bcrypt, { hash } from 'bcrypt';
 

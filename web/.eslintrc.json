@@ -1,6 +1,8 @@
 {
-  "extends": ["next/core-web-vitals", "@rocketseat/eslint-config/react"],
+  "extends": ["next/core-web-vitals", "@rocketseat/eslint-config/react", "plugin:@typescript-eslint/recommended"],
   "rules": {
     "camelcase": "off"
-  }
+  },
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"]
 }

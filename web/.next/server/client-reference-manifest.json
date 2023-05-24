@@ -742,28 +742,28 @@
         "async": false
       }
     },
-    "(app-client)/./src/app/products/page.tsx": {
+    "(app-client)/./src/assets/logo.png": {
       "*": {
-        "id": "(sc_client)/./src/app/products/page.tsx",
+        "id": "(sc_client)/./src/assets/logo.png",
         "name": "*",
         "chunks": [
-          "app/products/page:static/chunks/app/products/page.js"
+          "app/page:static/chunks/app/page.js"
         ],
         "async": false
       },
       "": {
-        "id": "(sc_client)/./src/app/products/page.tsx",
+        "id": "(sc_client)/./src/assets/logo.png",
         "name": "",
         "chunks": [
-          "app/products/page:static/chunks/app/products/page.js"
+          "app/page:static/chunks/app/page.js"
         ],
         "async": false
       },
       "default": {
-        "id": "(sc_client)/./src/app/products/page.tsx",
+        "id": "(sc_client)/./src/assets/logo.png",
         "name": "default",
         "chunks": [
-          "app/products/page:static/chunks/app/products/page.js"
+          "app/page:static/chunks/app/page.js"
         ],
         "async": false
       }
@@ -939,12 +939,119 @@
         ],
         "async": false
       }
+    },
+    "(app-client)/./src/components/login-form.component.tsx": {
+      "*": {
+        "id": "(sc_client)/./src/components/login-form.component.tsx",
+        "name": "*",
+        "chunks": [
+          "app/page:static/chunks/app/page.js"
+        ],
+        "async": false
+      },
+      "": {
+        "id": "(sc_client)/./src/components/login-form.component.tsx",
+        "name": "",
+        "chunks": [
+          "app/page:static/chunks/app/page.js"
+        ],
+        "async": false
+      },
+      "LoginFormComponent": {
+        "id": "(sc_client)/./src/components/login-form.component.tsx",
+        "name": "LoginFormComponent",
+        "chunks": [
+          "app/page:static/chunks/app/page.js"
+        ],
+        "async": false
+      }
+    },
+    "(app-client)/./src/app/products/page.tsx": {
+      "*": {
+        "id": "(sc_client)/./src/app/products/page.tsx",
+        "name": "*",
+        "chunks": [
+          "app/products/page:static/chunks/app/products/page.js"
+        ],
+        "async": false
+      },
+      "": {
+        "id": "(sc_client)/./src/app/products/page.tsx",
+        "name": "",
+        "chunks": [
+          "app/products/page:static/chunks/app/products/page.js"
+        ],
+        "async": false
+      },
+      "default": {
+        "id": "(sc_client)/./src/app/products/page.tsx",
+        "name": "default",
+        "chunks": [
+          "app/products/page:static/chunks/app/products/page.js"
+        ],
+        "async": false
+      }
+    },
+    "(app-client)/./src/components/product-card.component.tsx": {
+      "*": {
+        "id": "(sc_client)/./src/components/product-card.component.tsx",
+        "name": "*",
+        "chunks": [
+          "app/products/page:static/chunks/app/products/page.js"
+        ],
+        "async": false
+      },
+      "": {
+        "id": "(sc_client)/./src/components/product-card.component.tsx",
+        "name": "",
+        "chunks": [
+          "app/products/page:static/chunks/app/products/page.js"
+        ],
+        "async": false
+      },
+      "ProductCard": {
+        "id": "(sc_client)/./src/components/product-card.component.tsx",
+        "name": "ProductCard",
+        "chunks": [
+          "app/products/page:static/chunks/app/products/page.js"
+        ],
+        "async": false
+      }
+    },
+    "(app-client)/./src/components/product-list.component.tsx": {
+      "*": {
+        "id": "(sc_client)/./src/components/product-list.component.tsx",
+        "name": "*",
+        "chunks": [
+          "app/products/page:static/chunks/app/products/page.js"
+        ],
+        "async": false
+      },
+      "": {
+        "id": "(sc_client)/./src/components/product-list.component.tsx",
+        "name": "",
+        "chunks": [
+          "app/products/page:static/chunks/app/products/page.js"
+        ],
+        "async": false
+      },
+      "ProductList": {
+        "id": "(sc_client)/./src/components/product-list.component.tsx",
+        "name": "ProductList",
+        "chunks": [
+          "app/products/page:static/chunks/app/products/page.js"
+        ],
+        "async": false
+      }
     }
   },
   "edgeSSRModuleMapping": {},
   "cssFiles": {
     "/home/felipe/Documentos/comunikime/web/src/app/layout": [
       "static/css/app/layout.css"
+    ],
+    "/home/felipe/Documentos/comunikime/web/src/app/products/page": [
+      "static/css/app/products/page.css"
     ]
   },
   "clientModules": {
@@ -2644,50 +2751,29 @@
       ],
       "async": false
     },
-    "/home/felipe/Documentos/comunikime/web/src/app/products/page.tsx": {
-      "id": "(app-client)/./src/app/products/page.tsx",
+    "/home/felipe/Documentos/comunikime/web/src/assets/logo.png": {
+      "id": "(app-client)/./src/assets/logo.png",
       "name": "*",
       "chunks": [
-        "app/products/page:static/chunks/app/products/page.js"
+        "app/page:static/chunks/app/page.js"
       ],
       "async": false
     },
-    "/home/felipe/Documentos/comunikime/web/src/app/products/page.tsx#": {
-      "id": "(app-client)/./src/app/products/page.tsx",
+    "/home/felipe/Documentos/comunikime/web/src/assets/logo.png#": {
+      "id": "(app-client)/./src/assets/logo.png",
       "name": "",
       "chunks": [
-        "app/products/page:static/chunks/app/products/page.js"
+        "app/page:static/chunks/app/page.js"
       ],
       "async": false
     },
-    "/home/felipe/Documentos/comunikime/web/src/app/products/page.tsx#default": {
-      "id": "(app-client)/./src/app/products/page.tsx",
+    "/home/felipe/Documentos/comunikime/web/src/assets/logo.png#default": {
+      "id": "(app-client)/./src/assets/logo.png",
       "name": "default",
       "chunks": [
-        "app/products/page:static/chunks/app/products/page.js"
+        "app/page:static/chunks/app/page.js"
       ],
       "async": false
-    },
-    "/home/felipe/Documentos/comunikime/web/src/app/globals.css#": {
-      "id": "null",
-      "name": "default",
-      "chunks": [
-        "static/css/app/layout.css"
-      ]
-    },
-    "/home/felipe/Documentos/comunikime/web/node_modules/next/font/google/target.css?{\"path\":\"src/app/layout.tsx\",\"import\":\"Bai_Jamjuree\",\"arguments\":[{\"subsets\":[\"latin\"],\"weight\":\"700\",\"variable\":\"--font-bai-jamjuree\"}],\"variableName\":\"baiJamjuree\"}#": {
-      "id": "null",
-      "name": "default",
-      "chunks": [
-        "static/css/app/layout.css"
-      ]
-    },
-    "/home/felipe/Documentos/comunikime/web/node_modules/next/font/google/target.css?{\"path\":\"src/app/layout.tsx\",\"import\":\"Roboto_Flex\",\"arguments\":[{\"subsets\":[\"latin\"],\"variable\":\"--font-roboto\"}],\"variableName\":\"roboto\"}#": {
-      "id": "null",
-      "name": "default",
-      "chunks": [
-        "static/css/app/layout.css"
-      ]
     },
     "/home/felipe/Documentos/comunikime/web/node_modules/next/dist/client/image.js": {
       "id": "(app-client)/./node_modules/next/dist/client/image.js",
@@ -3022,6 +3108,130 @@
       "name": "value",
       "chunks": [
         "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "/home/felipe/Documentos/comunikime/web/src/components/login-form.component.tsx": {
+      "id": "(app-client)/./src/components/login-form.component.tsx",
+      "name": "*",
+      "chunks": [
+        "app/page:static/chunks/app/page.js"
+      ],
+      "async": false
+    },
+    "/home/felipe/Documentos/comunikime/web/src/components/login-form.component.tsx#": {
+      "id": "(app-client)/./src/components/login-form.component.tsx",
+      "name": "",
+      "chunks": [
+        "app/page:static/chunks/app/page.js"
+      ],
+      "async": false
+    },
+    "/home/felipe/Documentos/comunikime/web/src/components/login-form.component.tsx#LoginFormComponent": {
+      "id": "(app-client)/./src/components/login-form.component.tsx",
+      "name": "LoginFormComponent",
+      "chunks": [
+        "app/page:static/chunks/app/page.js"
+      ],
+      "async": false
+    },
+    "/home/felipe/Documentos/comunikime/web/src/app/globals.css#": {
+      "id": "null",
+      "name": "default",
+      "chunks": [
+        "static/css/app/layout.css"
+      ]
+    },
+    "/home/felipe/Documentos/comunikime/web/node_modules/next/font/google/target.css?{\"path\":\"src/app/layout.tsx\",\"import\":\"Bai_Jamjuree\",\"arguments\":[{\"subsets\":[\"latin\"],\"weight\":\"700\",\"variable\":\"--font-bai-jamjuree\"}],\"variableName\":\"baiJamjuree\"}#": {
+      "id": "null",
+      "name": "default",
+      "chunks": [
+        "static/css/app/layout.css"
+      ]
+    },
+    "/home/felipe/Documentos/comunikime/web/node_modules/next/font/google/target.css?{\"path\":\"src/app/layout.tsx\",\"import\":\"Roboto_Flex\",\"arguments\":[{\"subsets\":[\"latin\"],\"variable\":\"--font-roboto\"}],\"variableName\":\"roboto\"}#": {
+      "id": "null",
+      "name": "default",
+      "chunks": [
+        "static/css/app/layout.css"
+      ]
+    },
+    "/home/felipe/Documentos/comunikime/web/node_modules/react-toastify/dist/ReactToastify.css#": {
+      "id": "null",
+      "name": "default",
+      "chunks": [
+        "static/css/app/products/page.css"
+      ]
+    },
+    "/home/felipe/Documentos/comunikime/web/src/app/products/page.tsx": {
+      "id": "(app-client)/./src/app/products/page.tsx",
+      "name": "*",
+      "chunks": [
+        "app/products/page:static/chunks/app/products/page.js"
+      ],
+      "async": false
+    },
+    "/home/felipe/Documentos/comunikime/web/src/app/products/page.tsx#": {
+      "id": "(app-client)/./src/app/products/page.tsx",
+      "name": "",
+      "chunks": [
+        "app/products/page:static/chunks/app/products/page.js"
+      ],
+      "async": false
+    },
+    "/home/felipe/Documentos/comunikime/web/src/app/products/page.tsx#default": {
+      "id": "(app-client)/./src/app/products/page.tsx",
+      "name": "default",
+      "chunks": [
+        "app/products/page:static/chunks/app/products/page.js"
+      ],
+      "async": false
+    },
+    "/home/felipe/Documentos/comunikime/web/src/components/product-card.component.tsx": {
+      "id": "(app-client)/./src/components/product-card.component.tsx",
+      "name": "*",
+      "chunks": [
+        "app/products/page:static/chunks/app/products/page.js"
+      ],
+      "async": false
+    },
+    "/home/felipe/Documentos/comunikime/web/src/components/product-card.component.tsx#": {
+      "id": "(app-client)/./src/components/product-card.component.tsx",
+      "name": "",
+      "chunks": [
+        "app/products/page:static/chunks/app/products/page.js"
+      ],
+      "async": false
+    },
+    "/home/felipe/Documentos/comunikime/web/src/components/product-card.component.tsx#ProductCard": {
+      "id": "(app-client)/./src/components/product-card.component.tsx",
+      "name": "ProductCard",
+      "chunks": [
+        "app/products/page:static/chunks/app/products/page.js"
+      ],
+      "async": false
+    },
+    "/home/felipe/Documentos/comunikime/web/src/components/product-list.component.tsx": {
+      "id": "(app-client)/./src/components/product-list.component.tsx",
+      "name": "*",
+      "chunks": [
+        "app/products/page:static/chunks/app/products/page.js"
+      ],
+      "async": false
+    },
+    "/home/felipe/Documentos/comunikime/web/src/components/product-list.component.tsx#": {
+      "id": "(app-client)/./src/components/product-list.component.tsx",
+      "name": "",
+      "chunks": [
+        "app/products/page:static/chunks/app/products/page.js"
+      ],
+      "async": false
+    },
+    "/home/felipe/Documentos/comunikime/web/src/components/product-list.component.tsx#ProductList": {
+      "id": "(app-client)/./src/components/product-list.component.tsx",
+      "name": "ProductList",
+      "chunks": [
+        "app/products/page:static/chunks/app/products/page.js"
       ],
       "async": false
     }

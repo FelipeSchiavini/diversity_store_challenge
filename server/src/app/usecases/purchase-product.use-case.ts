@@ -23,10 +23,10 @@ export class PurchaseProductUseCase implements UseCase<PurchaseUseCaseInput, any
 			throw new NoProductInStockError();
 		}
 
-		await prisma.stockMovements.create({
+		return await prisma.stockMovements.create({
 			data: {
 				productId: input.productId,
-				quantity: input.quantity,
+				quantity: - input.quantity,
 				userId: input.userId,
 			},
 		});

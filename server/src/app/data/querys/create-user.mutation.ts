@@ -1,6 +1,6 @@
 import { User } from '@prisma/client';
 import { prisma } from '../../../libs/prisma';
-import { Role } from '../../../utils/@types/user.types';
+import { Role } from '../../../utils/@types/role.types';
 
 export const createUserMutation = async (input: Omit<User, 'id'>): Promise<User> => {
 	return await prisma.user.create({

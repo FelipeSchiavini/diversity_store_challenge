@@ -1,6 +1,6 @@
 import { createUserMutation } from '../app/data/querys/create-user.mutation';
 import { faker } from '@faker-js/faker';
-import { Role } from './@types/user.types';
+import { Role } from './@types/role.types';
 import { createProductMutation } from '../app/data/querys/create-product.mutation';
 import { createProductStockMovimentationMutation } from '../app/data/querys/create-product-stock-movement.mutation';
 import { Product, StockMovements, User } from '@prisma/client';

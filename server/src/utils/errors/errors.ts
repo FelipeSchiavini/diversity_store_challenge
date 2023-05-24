@@ -13,6 +13,7 @@ export class UnauthorizedError extends HttpError {
 	constructor() {
 		super(401, 'User not found!');
 		this.name = ErrorName.UnauthorizedError;
+		this.message = this.message
 	}
 }
 
@@ -31,11 +32,14 @@ export class ProductNotFoundError extends HttpError {
 }
 
 export class NoProductInStockError extends HttpError {
+
 	constructor() {
-		super(406, 'There is not enough product in stock. Please reduce the quantity or choose a different product.');
+		super(406, 'Não possui produtos suficientes em estoque!');
 		this.name = ErrorName.NoProductInStockError;
+		this.message = this.message
 	}
 }
+
 
 export class UserAlreadyExistsError extends HttpError {
 	constructor() {

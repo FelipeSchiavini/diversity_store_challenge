@@ -1,4 +1,4 @@
-import { Get, Param, Post, Body, JsonController } from 'routing-controllers';
+import { Get, Param, Post, Body, JsonController, Authorized } from 'routing-controllers';
 import { getListOfProductsQuery } from '../data/querys/get-list-of-products.query';
 import { getProductByIdQuery } from '../data/querys/get-product-by-id.query';
 import { CreateStockMovementsInput, ProductWithQuantity } from '../../utils/@types/products.types';
@@ -8,12 +8,14 @@ import { Service, Container } from 'typedi';
 import { Product } from '@prisma/client';
 import { createProductMutation } from '../data/querys/create-product.mutation';
 import { PurchaseProductUseCase } from '../usecases/purchase-product.use-case';
-import { createProductParser, createStockMovementsParser, productIdParser } from '../data/model/user-controller-input-validation';
+import { createProductParser, createStockMovementsParser, productIdParser } from '../data/model/product-controller-input-validation';
+import { CreateProductUrl, ProductListUrl, ProductPathUrl, PurchaseProductUrl, UpdateStockProductUrl } from '../../utils/routes';
+import { Role } from '../../utils/@types/role.types';
 
-@JsonController('/product')
 @Service()
+@JsonController(ProductPathUrl)
 export class ProductController {
-	@Get('/list')
+	@Get(ProductListUrl)
 	async getListOfProducts(): Promise<ProductWithQuantity[]> {
 		const products = await getListOfProductsQuery();
 
@@ -34,19 +36,22 @@ export class ProductController {
 		return aggregateProductAndStockQuantity(product);
 	}
 
-	@Post('/create')
+	@Authorized([Role.Admin])
+	@Post(CreateProductUrl)
 	async createProduct(@Body() input: Omit<Product, 'id'>) {
 		const product = createProductParser(input);
 		return await createProductMutation(product);
 	}
 
-	@Post('/purchase')
+	@Authorized([Role.Admin, Role.Client])
+	@Post(PurchaseProductUrl)
 	async purchaseProductById(@Body() input: CreateStockMovementsInput) {
 		const movement = createStockMovementsParser(input);
 		return await Container.get(PurchaseProductUseCase).exec(movement);
 	}
 
-	@Post('/add')
+	@Authorized([Role.Admin])
+	@Post(UpdateStockProductUrl)
 	async addStockProduct(@Body() input: CreateStockMovementsInput) {
 		const movement = createStockMovementsParser(input);
 		return '';

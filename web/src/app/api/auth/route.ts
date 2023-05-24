@@ -21,7 +21,6 @@ export async function GET(request: NextRequest) {
   const path = decodedToken.data.role === 'admin' ? '/admin' : '/products'
 
   const redirectURL = new URL(path, request.url)
-  console.log('🚀 ~ file: route.ts:24 ~ GET ~ redirectURL:', redirectURL)
 
   return NextResponse.redirect(redirectURL, {
     headers: {

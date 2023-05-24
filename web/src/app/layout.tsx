@@ -31,9 +31,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         className={`${roboto.variable} ${baiJamjuree.variable} bg-gray-900 font-sans text-gray-100`}
       >
         <main className="grid min-h-screen">
-          <div className="relative  flex flex-col items-center justify-between overflow-hidden border-r  border-white/10  bg-[url(../assets/bg-stars.svg)] bg-cover px-28 py-16">
+          <div className="relative flex flex-col items-center justify-between overflow-hidden bg-[url(../assets/bg-stars.svg)] bg-cover max-sm:px-8 max-sm:py-6 sm:px-28 sm:py-16">
             <div className="w-full">
-              {' '}
               {isAuthenticated ? <Profile /> : <SignIn />}
             </div>
             {children}

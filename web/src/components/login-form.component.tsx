@@ -28,47 +28,45 @@ export const LoginFormComponent = () => {
   }
 
   return (
-    <div className="flex flex-1 flex-col gap-4 ">
-      <form
-        onSubmit={handleWithLogin}
-        className="flex flex-1 flex-col gap-2"
-        ref={formRef}
+    <form
+      onSubmit={handleWithLogin}
+      className="flex-1 flex-col space-y-5"
+      ref={formRef}
+    >
+      <div className="w-full flex-col space-y-1">
+        <label
+          htmlFor="login"
+          className="flex w-full items-center text-sm text-gray-200 hover:text-gray-100"
+        >
+          Login
+        </label>
+        <input
+          type="text"
+          name="login"
+          id="login"
+          className="w-full rounded border-gray-400 bg-gray-700 p-1 pl-3 text-purple-500"
+        />
+      </div>
+      <div className=" w-full flex-col ">
+        <label
+          htmlFor="password"
+          className="flex w-full items-center text-sm text-gray-200 hover:text-gray-100"
+        >
+          Password
+        </label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          className="w-full rounded border-gray-400 bg-gray-700 p-1 pl-3 text-purple-500"
+        />
+      </div>
+      <button
+        type="submit"
+        className="inline-block w-full self-end rounded bg-green-500 px-5 py-3 font-alt text-sm uppercase leading-none text-black hover:bg-green-600"
       >
-        <div className="items-center gap-4 space-y-3">
-          <label
-            htmlFor="login"
-            className="flex w-full items-center text-sm text-gray-200 hover:text-gray-100"
-          >
-            Login
-          </label>
-          <input
-            type="text"
-            name="login"
-            id="login"
-            className="w-full rounded border-gray-400 bg-gray-700 p-1 pl-3 text-purple-500"
-          />
-
-          <label
-            htmlFor="password"
-            className="flex w-full items-center text-sm text-gray-200 hover:text-gray-100"
-          >
-            Password
-          </label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            className="w-full rounded border-gray-400 bg-gray-700 p-1 pl-3 text-purple-500"
-          />
-
-          <button
-            type="submit"
-            className="inline-block w-full self-end rounded-full bg-green-500 px-5 py-3 font-alt text-sm uppercase leading-none text-black hover:bg-green-600"
-          >
-            Salvar
-          </button>
-        </div>
-      </form>
-    </div>
+        Salvar
+      </button>
+    </form>
   )
 }

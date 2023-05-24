@@ -8,16 +8,11 @@ type ProductFromDb = Product & {
 };
 
 export const aggregateProductAndStockQuantity = (product: ProductFromDb): ProductWithQuantity => {
-	const { id, name, productUrl, price } = product;
-
 	const quantity = product.StockMovements.reduce((acc, curr) => {
 		return acc + curr.quantity;
 	}, 0);
 	return {
-		id,
-		name,
-		productUrl,
-		price,
-		quantity,
+		...product,
+		quantity
 	};
 };
