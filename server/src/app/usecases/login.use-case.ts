@@ -1,10 +1,9 @@
 import { User } from '@prisma/client';
 import { UseCase } from './usecase.model';
 import { Service } from 'typedi';
-import { getUserByLoginQuery } from '../data/querys/get-user-by-login.query';
+import { getUserByLoginQuery } from '../data/query/get-user-by-login.query';
 import { UserNotFoundError } from '../../utils/errors/errors';
 import bcrypt from 'bcrypt';
-import {config} from '../../config';
 import { sign } from 'jsonwebtoken';
 import { userLoginParser } from '../data/model/user-controller-input-validation';
 

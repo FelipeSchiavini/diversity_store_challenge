@@ -1,8 +1,9 @@
 import { prisma } from '../../libs/prisma';
 import { CreateStockMovementsInput } from '../../utils/@types/products.types';
+import { TokenUser } from '../../utils/@types/user.types';
 import { aggregateProductAndStockQuantity } from '../../utils/aggregate-product-and-stock-quantity';
 import { NoProductInStockError, ProductNotFoundError } from '../../utils/errors/errors';
-import { getProductByIdQuery } from '../data/querys/get-product-by-id.query';
+import { getProductByIdQuery } from '../data/query/get-product-by-id.query';
 import { UseCase } from './usecase.model';
 import { Service } from 'typedi';
 
@@ -10,7 +11,7 @@ type PurchaseUseCaseInput = CreateStockMovementsInput;
 
 @Service()
 export class PurchaseProductUseCase implements UseCase<PurchaseUseCaseInput, any> {
-	async exec(input: PurchaseUseCaseInput) {
+	async exec(input: PurchaseUseCaseInput, CurrentUser: TokenUser) {
 		const product = await getProductByIdQuery(input.productId);
 
 		if (!product) {
@@ -19,7 +20,7 @@ export class PurchaseProductUseCase implements UseCase<PurchaseUseCaseInput, any
 
 		const productInfo = aggregateProductAndStockQuantity(product);
 
-		if (!this.verifyIfHasStockQuantity(productInfo.quantity, input.quantity)) {
+		if (productInfo.quantity < input.quantity) {
 			throw new NoProductInStockError();
 		}
 
@@ -27,12 +28,9 @@ export class PurchaseProductUseCase implements UseCase<PurchaseUseCaseInput, any
 			data: {
 				productId: input.productId,
 				quantity: - input.quantity,
-				userId: input.userId,
+				userId: CurrentUser.sub,
 			},
 		});
 	}
 
-	private async verifyIfHasStockQuantity(stockQuantity: number, purchaseQuantity: number) {
-		return stockQuantity >= purchaseQuantity;
-	}
 }

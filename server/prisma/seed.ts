@@ -1,7 +1,7 @@
-import { createUserMutation } from '../src/app/data/querys/create-user.mutation';
+import { createUserMutation } from '../src/app/data/query/create-user.mutation';
 import { Role } from '../src/utils/@types/role.types';
 import { hash } from 'bcrypt';
-import { createProductWithStockMutation } from '../src/app/data/querys/create-product-with-stock';
+import { createProductWithStockMutation } from '../src/app/data/query/create-product-with-stock';
 import { TestUtils } from '../src/utils/test.utils';
 import { faker } from '@faker-js/faker';
 

@@ -1,12 +1,13 @@
+import { DecodedToken } from '@/lib/auth'
+import { logoffAndRedirect } from '@/lib/util'
 import { NextRequest, NextResponse } from 'next/server'
 
-export const productsMiddleware = (request: NextRequest, token?: string) => {
+export const productsMiddleware = (
+  request: NextRequest,
+  token?: DecodedToken,
+) => {
   if (!token) {
-    return NextResponse.redirect(new URL('/', request.url), {
-      headers: {
-        'Set-Cookie': `Path=/`,
-      },
-    })
+    return logoffAndRedirect(request)
   }
 
   return NextResponse.next()

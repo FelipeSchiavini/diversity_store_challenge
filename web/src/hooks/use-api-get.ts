@@ -4,11 +4,11 @@ import { AxiosError, AxiosResponse } from 'axios'
 import { api } from '@/lib/api'
 import { handleWithErrorName } from '@/utils/error.message'
 
-export const useGet = <S>(input: { onError?: (message: string) => void }) => {
+export const useGet = <T>(input: { onError?: (message: string) => void }) => {
   const [isLoading, setIsLoading] = useState(false)
-  const [data, setData] = useState<S>()
+  const [data, setData] = useState<T>()
 
-  const getRequest = async (path: string): Promise<S | undefined> => {
+  const getRequest = async (path: string): Promise<T | undefined> => {
     try {
       setIsLoading(true)
       const token = Cookies.get('token')
@@ -18,13 +18,14 @@ export const useGet = <S>(input: { onError?: (message: string) => void }) => {
         Authorization: `Bearer ${token}`,
       }
 
-      const response = await api.get<never, AxiosResponse<S>>(path, {
+      const response = await api.get<T>(path, {
         headers,
       })
 
       setIsLoading(false)
-      setData(response?.data)
-      return response?.data
+      const data = response?.data
+      setData(data)
+      return data
     } catch (error) {
       setIsLoading(false)
       if (error instanceof AxiosError) {
@@ -37,5 +38,3 @@ export const useGet = <S>(input: { onError?: (message: string) => void }) => {
 
   return { data, getRequest, isLoading }
 }
-
-export default useGet

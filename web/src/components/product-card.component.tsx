@@ -7,6 +7,8 @@ import { useApiPost } from '@/hooks/use-api-post'
 import useToast from '@/hooks/use-toast'
 import { Spinner } from './spinner.component'
 import { useAuth } from '@/hooks/use-auth'
+import { Role } from '@/utils/types'
+import Admin from '@/app/admin/page'
 
 interface ProductCardProps {
   id: string
@@ -14,6 +16,7 @@ interface ProductCardProps {
   description: string
   name: string
   productUrl: string
+  role: Role
   refresh: () => void
 }
 
@@ -21,18 +24,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   quantity,
   description,
   name,
+  role,
   id,
   productUrl,
   refresh,
 }) => {
   const [quantityInCart, setQuantityInCart] = useState(0)
   const { successToast, errorToast, Toast } = useToast()
-  const user = useAuth()
 
   const [post, loading] = useApiPost({
     onError: errorToast,
-    onSuccess: () => successToast(`Produto ${name} comprado com sucesso!`),
+    onSuccess: () => successToast(texts.sucessMessage),
   })
+
+  const texts = config[role]
 
   const handlePlusCircleClick = () => {
     if (quantity <= quantityInCart) {
@@ -50,12 +55,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
   const purchaseProduct = async () => {
     if (quantityInCart === 0) {
-      errorToast('Você precisa adicionar o item ao carrinho!')
+      errorToast(texts.errorMessage)
       return
     }
 
-    await post(`/product/purchase/`, {
-      userId: user.sub,
+    await post(texts.buttonText, {
       productId: id,
       quantity: quantityInCart,
     })
@@ -65,15 +69,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   }
 
   return (
-    <div className="h-[370px] w-52 justify-center rounded border border-solid border-gray-600 bg-gray-800 p-3">
+    <div className="h-[370px] w-52 items-center justify-center rounded border border-solid border-gray-600 bg-gray-800 p-3">
       <Toast />
       <div className="flex h-full  flex-col justify-between">
         <div className="space-y-3">
-          <img
-            src={productUrl}
-            alt="product image"
-            className="h-32 w-full rounded "
-          />
+          <img src={productUrl} alt={name} className="h-32 w-full rounded " />
           <p className="center font-bold text-gray-50">{name}</p>
           <p className="inline rounded bg-gray-100 p-1 text-sm leading-none text-gray-800">
             {`Quant: ${quantity}`}
@@ -92,13 +92,28 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
           <button
             onClick={purchaseProduct}
-            className="inline-block w-full  rounded bg-green-500 py-2 font-alt text-sm uppercase leading-none text-gray-900 hover:bg-green-600"
+            className="inline-block w-full rounded bg-green-500 py-2 font-alt text-sm uppercase leading-none text-gray-900 hover:bg-green-600"
             disabled={loading}
           >
-            {loading ? <Spinner /> : <span>Comprar</span>}
+            {loading ? <Spinner /> : <span>{texts.buttonText}</span>}
           </button>
         </div>
       </div>
     </div>
   )
+}
+
+const config = {
+  admin: {
+    buttonText: 'Add To Stock',
+    path: '/product/add',
+    errorMessage: 'Add the product before!',
+    sucessMessage: 'Product added to stock!',
+  },
+  client: {
+    buttonText: 'Purchase',
+    path: '/product/purchase',
+    errorMessage: 'Add the product before!',
+    sucessMessage: 'Product purchased successfully! 🥳',
+  },
 }

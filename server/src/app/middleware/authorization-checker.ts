@@ -1,8 +1,6 @@
 import { Action, UnauthorizedError } from 'routing-controllers';
 import { Role } from '../../utils/@types/role.types';
-import { JwtPayload, verify } from 'jsonwebtoken';
-import config from 'eslint-config-standard-with-typescript';
-import { log } from 'console';
+import { JwtPayload, verify } from 'jsonwebtoken';	
 
 export const authorizationChecker = async (action: Action, roles: Role[]) => {
 	const token = action?.request?.headers['authorization'];

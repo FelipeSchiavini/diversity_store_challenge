@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "lint": "eslint src --ext .ts --fix",
-    "prettier:format": "prettier --config .prettierrc 'src/**/*.ts' --write"
+    "prettier:format": "prettier --config .prettierrc 'src/**/*.ts' --write",
+    "db:studio": "prisma studio",
+    "db:seed": "prisma db seed"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

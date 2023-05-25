@@ -4,8 +4,7 @@ import express from 'express';
 import { useExpressServer } from 'routing-controllers';
 import path from 'path';
 import { authorizationChecker } from './app/middleware/authorization-checker';
-import { config } from './config';
-import { errorHandler } from './app/middleware/error-handler';
+import { currentUserChecker } from './app/middleware/current-user-checker';
 
 const ServerInitialize = async () => {
 	const server = express();
@@ -13,14 +12,14 @@ const ServerInitialize = async () => {
 	server.use(express.json());
 
 	useExpressServer(server, {
-		cors: true,
 		controllers: [path.join(__dirname, 'app/controllers/**/*.ts')],
-		authorizationChecker: authorizationChecker,
+		cors: true,
 		defaultErrorHandler: true, 
+		authorizationChecker,
+		currentUserChecker,
 	});
-
-	// server.use(errorHandler)
-	return server.listen(config.apiPort, () => console.log(`Listening on port ${config.apiPort}`));
+	const port = process.env.PORT || '3333'
+	return server.listen(port, () => console.log(`Listening on port ${port}`));
 };
 
 ServerInitialize();

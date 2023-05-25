@@ -32,17 +32,16 @@ export const createProductParser = (input: Omit<Product, 'id'>) => {
 	throw new InvalidInputError('Omit<Product, id>');
 };
 
-export const createStockMovementsParser = (input: CreateStockMovementsInput) => {
+export const createStockMovimentsParser = (input: CreateStockMovementsInput) => {
 	const movementsParser = z.object({
-		userId: z.string(),
 		productId: z.string(),
 		quantity: z.number(),
 	});
 
-	const parsedMovimentId = movementsParser.safeParse(input);
+	const parsedMovementId = movementsParser.safeParse(input);
 
-	if (parsedMovimentId.success) {
-		return parsedMovimentId.data;
+	if (parsedMovementId.success) {
+		return parsedMovementId.data;
 	}
 
 	throw new InvalidInputError(movementsParser._type);

@@ -19,8 +19,6 @@ export function getUser(): User {
   if (!token) {
     throw new Error('Unauthorized')
   }
-
-  const user: DecodedToken = decode(token)
-
+  const user = decode<DecodedToken>(token)
   return user.data
 }

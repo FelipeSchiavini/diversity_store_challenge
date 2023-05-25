@@ -1,10 +1,10 @@
-import { createUserMutation } from '../app/data/querys/create-user.mutation';
+import { createUserMutation } from '../app/data/query/create-user.mutation';
 import { faker } from '@faker-js/faker';
 import { Role } from './@types/role.types';
-import { createProductMutation } from '../app/data/querys/create-product.mutation';
-import { createProductStockMovimentationMutation } from '../app/data/querys/create-product-stock-movement.mutation';
+import { createProductMutation } from '../app/data/query/create-product.mutation';
+import { createProductStockMovimentationMutation } from '../app/data/query/create-product-stock-movement.mutation';
 import { Product, StockMovements, User } from '@prisma/client';
-import { createProductWithStockMutation } from '../app/data/querys/create-product-with-stock';
+import { createProductWithStockMutation } from '../app/data/query/create-product-with-stock';
 
 interface ITestUtils {
 	createUser: (role: Role) => Promise<User>;

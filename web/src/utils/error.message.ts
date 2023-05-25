@@ -10,16 +10,16 @@ export enum ErrorName {
 export const handleWithErrorName = (error: ErrorName) => {
   switch (error) {
     case ErrorName.InvalidInputError:
-      return 'Dados Inválidos! Entre em contato com nosso suporte!'
+      return 'Invalid data! Please contact our support!'
     case ErrorName.UnauthorizedError:
-      return 'Usuário não autorizado para realizar esta operação!'
+      return 'User not authorized!'
     case ErrorName.UserNotFoundError:
-      return 'Usuário não encontrado!'
+      return 'User not found!'
     case ErrorName.ProductNotFoundError:
-      return 'Produto não encontrado!'
+      return 'Product not found!'
     case ErrorName.NoProductInStockError:
-      return 'Não existe essa quantidade de produto em estoque, tente uma quantidade menor'
+      return 'There is no such quantity of product in stock, try a smaller quantity'
     default:
-      return 'Algo deu errado. Tente novamente mais tarde'
+      return 'Something went wrong 🥹. Try again later!'
   }
 }
