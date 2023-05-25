@@ -57,8 +57,9 @@ export const LoginFormComponent = () => {
 
     formRef?.current?.reset()
     const token = response?.token as string
-    setUser(decode<DecodedToken>(token).data)
     setIsSubmitting(false)
+    if (!token) return
+    setUser(decode<DecodedToken>(token).data)
     router.push(`api/auth?token=${response?.token}`)
   }
 
@@ -76,7 +77,7 @@ export const LoginFormComponent = () => {
         <div className=" w-full flex-col ">
           <FormInput label="Password" type="password" id="password" />
         </div>
-        <FormButton text="SignIn" isLoading={isSubmitting} />
+        <FormButton text="Sign In" isLoading={isSubmitting} />
       </form>
     </>
   )

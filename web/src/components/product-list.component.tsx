@@ -30,7 +30,6 @@ export const ProductList: React.FC<ProductListProps> = (props) => {
   const { data, getRequest, isLoading } = useGet<ProductResponse>({
     onError: errorToast,
   })
-  console.log('🚀 ~ file: product-list.component.tsx:28 ~ data:', data)
 
   useEffect(() => {
     refresh()

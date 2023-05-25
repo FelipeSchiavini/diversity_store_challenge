@@ -19,7 +19,7 @@ export default function Admin() {
   return (
     <>
       <h2 className="mb-3 mt-10 text-3xl font-bold leading-tight text-gray-50">
-        Register new Products
+        Product
       </h2>
       <div className="flex justify-center max-sm:w-full sm:w-96 ">
         <ProductFormComponent />

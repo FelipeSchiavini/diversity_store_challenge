@@ -7,7 +7,7 @@ export const Login = () => {
     <div className="w-full items-center space-y-5 max-sm:w-full sm:max-w-sm">
       <Image src={Logo} alt="Logo comunikime" width={200} className="m-auto" />
       <h1 className="text-3xl font-bold leading-tight text-gray-50">
-        Do your Login
+        Welcome to shop
       </h1>
       <LoginFormComponent />
     </div>

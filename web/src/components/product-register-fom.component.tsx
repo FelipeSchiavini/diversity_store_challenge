@@ -81,7 +81,7 @@ export const ProductFormComponent = () => {
           <FormInput label="Price" type="text" id="price" />
         </div>
         <div className=" w-full flex-col ">
-          <FormInput label="product URL image" type="text" id="productUrl" />
+          <FormInput label="Product URL image" type="text" id="productUrl" />
         </div>
         <div className=" w-full flex-col ">
           <label
@@ -96,7 +96,7 @@ export const ProductFormComponent = () => {
             className="w-full rounded border-gray-400 bg-gray-700 p-1 pl-3 text-purple-500"
           />
         </div>
-        <FormButton text="Register new Product" isLoading={isSubmitting} />
+        <FormButton text="Register" isLoading={isSubmitting} />
       </form>
     </>
   )

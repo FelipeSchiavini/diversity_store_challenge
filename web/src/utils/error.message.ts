@@ -1,10 +1,11 @@
 export enum ErrorName {
-  UserNotFoundError = 'UserNotFoundError',
-  ProductNotFoundError = 'ProductNotFoundError',
-  NoProductInStockError = 'NoProductInStockError',
-  InvalidInputError = 'InvalidInputError',
-  UserAlreadyExistsError = 'UserAlreadyExistsError',
-  UnauthorizedError = 'UnauthorizedError',
+  UserNotFoundError = 'UserNotFound',
+  ProductNotFoundError = 'ProductNotFound',
+  NoProductInStockError = 'NoProductInStock',
+  InvalidInputError = 'InvalidInput',
+  UserAlreadyExistsError = 'UserAlreadyExists',
+  UnauthorizedError = 'Unauthorized',
+  StockCantBeNegativeError = 'StockCantBeNegative',
 }
 
 export const handleWithErrorName = (error: ErrorName) => {
