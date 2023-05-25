@@ -13,7 +13,6 @@ type PurchaseUseCaseInput = CreateStockMovementsInput;
 export class AddProductToStockUseCase implements UseCase<PurchaseUseCaseInput, any> {
 	async exec(input: PurchaseUseCaseInput, CurrentUser: TokenUser) {
 		const product = await getProductByIdQuery(input.productId);
-		console.log("🚀 ~ file: add-product.use-case.ts:16 ~ AddProductToStockUseCase ~ exec ~ product:", product)
 
 		if (!product) {
 			throw new ProductNotFoundError();

@@ -28,7 +28,7 @@ export const LoginFormComponent = () => {
   const { setUser } = useAuth()
   const { errorToast, Toast } = useToast()
 
-  const [postRequest, isLoading] = useApiPost<AuthDataRequest, AuthResponse>({
+  const [postRequest] = useApiPost<AuthDataRequest, AuthResponse>({
     onError: errorToast,
   })
 

@@ -17,7 +17,6 @@ export const productIdParser = (productId: string) => {
 export const createProductParser = (input: Omit<Product, 'id'>) => {
 	const productParser = z.object({
 		name: z.string(),
-		describe: z.string(),
 		productUrl: z.string().url(),
 		description: z.string(),
 		price: z.number(),

@@ -2,7 +2,7 @@ import { Get, Param, Post, Body, JsonController, Authorized, CurrentUser } from 
 import { getListOfProductsQuery } from '../data/query/get-list-of-products.query';
 import { getProductByIdQuery } from '../data/query/get-product-by-id.query';
 import { CreateStockMovementsInput, ProductWithQuantity } from '../../utils/@types/products.types';
-import { aggregateProductAndStockQuantity } from '../../utils/aggregate-product-and-stock-quantity';
+import {  aggregateProductAndStockQuantity } from '../../utils/aggregate-product-and-stock-quantity';
 import { ProductNotFoundError } from '../../utils/errors/errors';
 import { Service, Container } from 'typedi';
 import { Product } from '@prisma/client';
@@ -13,17 +13,33 @@ import { CreateProductUrl, ProductListUrl, ProductPathUrl, PurchaseProductUrl, U
 import { Role } from '../../utils/@types/role.types';
 import { TokenUser } from '../../utils/@types/user.types';
 import { AddProductToStockUseCase } from '../usecases/add-product.use-case';
+import { prisma } from '../../libs/prisma';
+
+interface ListOfProducts {
+	productsList: 	ProductWithQuantity[]
+	totalOfPages: number
+}
 
 @Service()
 @JsonController(ProductPathUrl)
 export class ProductController {
-	@Get(ProductListUrl)
-	async getListOfProducts(): Promise<ProductWithQuantity[]> {
-		const products = await getListOfProductsQuery();
-
-		return products.map((product) => {
+	@Get(`${ProductListUrl}/:pagination`)
+	async getListOfProducts(@Param('pagination') pagination: string): Promise<ListOfProducts> {
+		const productsPerPage = 10
+		const skip = (Number(pagination ) - 1) * productsPerPage
+		const [rows, products] = await Promise.all([
+			await prisma.product.count(),
+			await getListOfProductsQuery(skip)
+		])
+	
+		const productsList = products.map((product) => {
 			return aggregateProductAndStockQuantity(product);
 		});
+
+		return {
+			totalOfPages: Math.ceil(rows / productsPerPage),
+			productsList
+		}
 	}
 
 	@Get('/:productId')
@@ -41,7 +57,9 @@ export class ProductController {
 	@Authorized([Role.Admin])
 	@Post(CreateProductUrl)
 	async createProduct(@Body() input: Omit<Product, 'id'>) {
+		console.log("🚀 ~ file: products.controller.ts:44 ~ ProductController ~ createProduct ~ input:", input)
 		const product = createProductParser(input);
+		console.log("🚀 ~ file: products.controller.ts:45 ~ ProductController ~ createProduct ~ product:", product)
 		return await createProductMutation(product);
 	}
 
