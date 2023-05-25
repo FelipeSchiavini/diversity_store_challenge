@@ -2,8 +2,6 @@
 
 import { useRouter } from 'next/navigation'
 import { FormEvent, useRef, useState } from 'react'
-
-import { Spinner } from './spinner.component'
 import { useApiPost } from '@/hooks/use-api-post'
 import useToast from '@/hooks/use-toast'
 import {
@@ -11,6 +9,8 @@ import {
   validateFloatNumber,
   validateImageURL,
 } from '@/utils/validation'
+import { FormButton } from './form-button.component'
+import { FormInput } from './form.input.component'
 
 interface Product {
   id: string
@@ -75,46 +75,13 @@ export const ProductFormComponent = () => {
         ref={formRef}
       >
         <div className="w-full flex-col space-y-1">
-          <label
-            htmlFor="name"
-            className="flex w-full items-center text-sm text-gray-200 hover:text-gray-100"
-          >
-            Name
-          </label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            className="w-full rounded border-gray-400 bg-gray-700 p-1 pl-3 text-purple-500"
-          />
+          <FormInput label="Name" type="text" id="name" />
         </div>
         <div className=" w-full flex-col ">
-          <label
-            htmlFor="price"
-            className="flex w-full items-center text-sm text-gray-200 hover:text-gray-100"
-          >
-            Price
-          </label>
-          <input
-            type="text"
-            name="price"
-            id="price"
-            className="w-full rounded border-gray-400 bg-gray-700 p-1 pl-3 text-purple-500"
-          />
+          <FormInput label="Price" type="text" id="price" />
         </div>
         <div className=" w-full flex-col ">
-          <label
-            htmlFor="productUrl"
-            className="flex w-full items-center text-sm text-gray-200 hover:text-gray-100"
-          >
-            Product URL
-          </label>
-          <input
-            type="text"
-            name="productUrl"
-            id="productUrl"
-            className="w-full rounded border-gray-400 bg-gray-700 p-1 pl-3 text-purple-500"
-          />
+          <FormInput label="product URL image" type="text" id="productUrl" />
         </div>
         <div className=" w-full flex-col ">
           <label
@@ -129,13 +96,7 @@ export const ProductFormComponent = () => {
             className="w-full rounded border-gray-400 bg-gray-700 p-1 pl-3 text-purple-500"
           />
         </div>
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="inline-block w-full self-end rounded bg-green-500 px-5 py-3 font-alt text-sm uppercase leading-none text-black hover:bg-green-600"
-        >
-          {isSubmitting ? <Spinner /> : <span>Register new Product</span>}
-        </button>
+        <FormButton text="Register new Product" isLoading={isSubmitting} />
       </form>
     </>
   )
@@ -149,23 +110,23 @@ const mapToProductCreation = (
   input: MapToProductCreationInput,
   onError: (message: string) => void,
 ): ProductCreateRequest | null => {
+  if (!hasMoreThanThreeCharacters(input?.name)) {
+    onError('Name should has at least 4 characters')
+    return null
+  }
+
+  if (!validateFloatNumber(input?.price)) {
+    onError('Fix price value before continue')
+    return null
+  }
+
   if (!validateImageURL(input?.productUrl)) {
     onError('Fix image url before continue')
     return null
   }
 
-  if (!hasMoreThanThreeCharacters(input?.name)) {
-    onError('Fix image url before continue')
-    return null
-  }
-
   if (!hasMoreThanThreeCharacters(input?.description)) {
-    onError('Fix image url before continue')
-    return null
-  }
-
-  if (!validateFloatNumber(input?.price)) {
-    onError('Fix image url before continue')
+    onError('Description should has at least 4 characters')
     return null
   }
 

@@ -1,7 +1,7 @@
 'use client'
 
 import { Dispatch, SetStateAction } from 'react'
-import { Spinner } from './spinner.component'
+import { Button } from './button.component'
 
 export interface Product {
   id: string
@@ -24,21 +24,18 @@ export const Pagination: React.FC<PaginationProps> = (props) => {
   return (
     <>
       <div className="mb-8 mt-8 flex w-[300px] gap-3">
-        <button
-          onClick={() => updatePagination(pagination - 1)}
-          className="inline-block w-full rounded bg-green-500 py-2 font-alt text-sm uppercase leading-none text-gray-900 hover:bg-green-600 disabled:bg-gray-400"
+        <Button
           disabled={isLoading || pagination === 1}
-        >
-          {isLoading ? <Spinner /> : <span>before</span>}
-        </button>
-
-        <button
-          onClick={() => updatePagination(pagination + 1)}
-          className="inline-block w-full rounded bg-green-500 py-2 font-alt text-sm uppercase leading-none text-gray-900 hover:bg-green-600  disabled:bg-gray-400"
+          text={'before'}
+          isLoading={isLoading}
+          onClick={() => updatePagination(pagination - 1)}
+        />
+        <Button
           disabled={isLoading || pagination >= totalOfPages}
-        >
-          {isLoading ? <Spinner /> : <span>next</span>}
-        </button>
+          text={'next'}
+          isLoading={isLoading}
+          onClick={() => updatePagination(pagination + 1)}
+        />
       </div>
     </>
   )

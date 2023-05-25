@@ -8,6 +8,9 @@ import { useAuth } from '@/hooks/use-auth'
 import { Spinner } from './spinner.component'
 import { useApiPost } from '@/hooks/use-api-post'
 import useToast from '@/hooks/use-toast'
+import { FormButton } from './form-button.component'
+import { SignIn } from './sign-in.component'
+import { FormInput } from './form.input.component'
 
 interface AuthResponse {
   token: string
@@ -28,8 +31,13 @@ export const LoginFormComponent = () => {
   const { setUser } = useAuth()
   const { errorToast, Toast } = useToast()
 
+  const onError = (message: string) => {
+    setIsSubmitting(false)
+    errorToast(message)
+  }
+
   const [postRequest] = useApiPost<AuthDataRequest, AuthResponse>({
-    onError: errorToast,
+    onError,
   })
 
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -38,7 +46,6 @@ export const LoginFormComponent = () => {
 
     const formData = new FormData(event.currentTarget)
     const login = formData.get('login') as string
-
     const password = formData.get('password') as string
 
     const response = await postRequest('/user/login', {
@@ -64,40 +71,12 @@ export const LoginFormComponent = () => {
         ref={formRef}
       >
         <div className="w-full flex-col space-y-1">
-          <label
-            htmlFor="login"
-            className="flex w-full items-center text-sm text-gray-200 hover:text-gray-100"
-          >
-            Login
-          </label>
-          <input
-            type="text"
-            name="login"
-            id="login"
-            className="w-full rounded border-gray-400 bg-gray-700 p-1 pl-3 text-purple-500"
-          />
+          <FormInput label="Login" type="text" id="login" />
         </div>
         <div className=" w-full flex-col ">
-          <label
-            htmlFor="password"
-            className="flex w-full items-center text-sm text-gray-200 hover:text-gray-100"
-          >
-            Password
-          </label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            className="w-full rounded border-gray-400 bg-gray-700 p-1 pl-3 text-purple-500"
-          />
+          <FormInput label="Password" type="password" id="password" />
         </div>
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="inline-block w-full self-end rounded bg-green-500 px-5 py-3 font-alt text-sm uppercase leading-none text-black hover:bg-green-600"
-        >
-          {isSubmitting ? <Spinner /> : <span>SignIn</span>}
-        </button>
+        <FormButton text="SignIn" isLoading={isSubmitting} />
       </form>
     </>
   )

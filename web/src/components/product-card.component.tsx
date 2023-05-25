@@ -9,6 +9,7 @@ import { Spinner } from './spinner.component'
 import { useAuth } from '@/hooks/use-auth'
 import { Role } from '@/utils/types'
 import Admin from '@/app/admin/page'
+import { Button } from './button.component'
 
 interface ProductCardProps {
   id: string
@@ -61,7 +62,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     setQuantityInCart(quantityInCart - 1)
   }
 
-  const purchaseProduct = async () => {
+  const handleWithProductButton = async () => {
     if (quantityInCart === 0) {
       errorToast(texts.errorMessage)
       return
@@ -97,14 +98,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             {quantityInCart}
             <MinusCircle onClick={handleMinusCircleClick} />
           </div>
-
-          <button
-            onClick={purchaseProduct}
-            className="inline-block w-full rounded bg-green-500 py-2 font-alt text-sm uppercase leading-none text-gray-900 hover:bg-green-600"
-            disabled={loading}
-          >
-            {loading ? <Spinner /> : <span>{texts.buttonText}</span>}
-          </button>
+          <Button
+            text={texts.buttonText}
+            isLoading={loading}
+            onClick={handleWithProductButton}
+          />
         </div>
       </div>
     </div>
