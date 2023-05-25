@@ -1,7 +1,6 @@
 import { HttpError } from 'routing-controllers';
 import { ErrorName } from './error.name';
 
-
 export class InvalidInputError extends HttpError {
 	constructor(input?: unknown) {
 		super(400, `Invalid Input it should be: ${input}`);
@@ -13,7 +12,7 @@ export class UnauthorizedError extends HttpError {
 	constructor() {
 		super(401, 'User not found!');
 		this.name = ErrorName.UnauthorizedError;
-		this.message = this.message
+		this.message = this.message;
 	}
 }
 
@@ -32,18 +31,23 @@ export class ProductNotFoundError extends HttpError {
 }
 
 export class NoProductInStockError extends HttpError {
-
 	constructor() {
 		super(406, 'Não possui produtos suficientes em estoque!');
 		this.name = ErrorName.NoProductInStockError;
-		this.message = this.message
+		this.message = this.message;
 	}
 }
-
 
 export class UserAlreadyExistsError extends HttpError {
 	constructor() {
 		super(409, `User Login already exists!`);
 		this.name = ErrorName.UserAlreadyExistsError;
+	}
+}
+
+export class StockCantBeNegativeError extends HttpError {
+	constructor() {
+		super(406, `Stock cant be negative!`);
+		this.name = ErrorName.StockCantBeNegativeError;
 	}
 }

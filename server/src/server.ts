@@ -14,11 +14,11 @@ const ServerInitialize = async () => {
 	useExpressServer(server, {
 		controllers: [path.join(__dirname, 'app/controllers/**/*.ts')],
 		cors: true,
-		defaultErrorHandler: true, 
+		defaultErrorHandler: true,
 		authorizationChecker,
 		currentUserChecker,
 	});
-	const port = process.env.PORT || '3333'
+	const port = process.env.PORT || '3333';
 	return server.listen(port, () => console.log(`Listening on port ${port}`));
 };
 

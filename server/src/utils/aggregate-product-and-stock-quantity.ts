@@ -13,6 +13,6 @@ export const aggregateProductAndStockQuantity = (product: ProductFromDb): Produc
 	}, 0);
 	return {
 		...product,
-		quantity
+		quantity,
 	};
 };

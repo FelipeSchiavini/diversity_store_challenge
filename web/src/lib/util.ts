@@ -1,9 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 
 export const logoffAndRedirect = (request: NextRequest) => {
-  NextResponse.redirect(new URL('/', request.url), {
+  const redirectURL = new URL('/', request.url)
+
+  return NextResponse.redirect(redirectURL, {
     headers: {
-      'Set-Cookie': `Path=/`,
+      'Set-Cookie': `token=; Path=/; max-age=0;`,
     },
   })
 }

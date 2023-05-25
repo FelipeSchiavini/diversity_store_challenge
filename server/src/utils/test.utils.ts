@@ -5,19 +5,21 @@ import { createProductMutation } from '../app/data/query/create-product.mutation
 import { createProductStockMovimentationMutation } from '../app/data/query/create-product-stock-movement.mutation';
 import { Product, StockMovements, User } from '@prisma/client';
 import { createProductWithStockMutation } from '../app/data/query/create-product-with-stock';
+import { hash } from 'bcrypt';
 
 interface ITestUtils {
 	createUser: (role: Role) => Promise<User>;
 	createProduct: (name?: string, price?: number, productUrl?: string, description?: string) => Promise<Product>;
 	createStockMoviments: (productId: string, userId: string, quantity?: number) => Promise<StockMovements>;
-	createProductWithStock: (userId: string, quantity: number) => Promise<any>
+	createProductWithStock: (userId: string, quantity: number) => Promise<any>;
 }
 
 export const TestUtils: ITestUtils = {
 	createUser: async (role: Role = Role.Client) => {
+		const passwordHashed = await hash(faker.internet.password(), 10);
 		return await createUserMutation({
 			login: faker.internet.email(),
-			password: faker.internet.password(),
+			password: passwordHashed,
 			role,
 		});
 	},
@@ -27,7 +29,7 @@ export const TestUtils: ITestUtils = {
 			name: name ?? faker.commerce.product(),
 			price: price ?? parseFloat(faker.commerce.price()),
 			productUrl: productUrl ?? faker.image.urlPicsumPhotos(),
-			description: description ?? faker.commerce.productDescription()
+			description: description ?? faker.commerce.productDescription(),
 		});
 	},
 
@@ -42,13 +44,13 @@ export const TestUtils: ITestUtils = {
 	createProductWithStock: async (userId: string, quantity: number) => {
 		return await createProductWithStockMutation(
 			{
-				name:faker.commerce.product(),
-				price:  parseFloat(faker.commerce.price()),
-				productUrl:  faker.image.urlPicsumPhotos(),
-				description:  faker.commerce.productDescription()
+				name: faker.commerce.product(),
+				price: parseFloat(faker.commerce.price()),
+				productUrl: faker.image.urlPicsumPhotos(),
+				description: faker.commerce.productDescription(),
 			},
 			quantity,
-			userId,
-		)
-	}
+			userId
+		);
+	},
 };

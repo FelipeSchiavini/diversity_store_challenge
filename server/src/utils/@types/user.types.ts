@@ -1,7 +1,7 @@
-import { Role } from "./role.types";
+import { Role } from './role.types';
 
 export interface TokenUser {
-    role: Role
-    sub: string
-    login: string
+	role: Role;
+	sub: string;
+	login: string;
 }

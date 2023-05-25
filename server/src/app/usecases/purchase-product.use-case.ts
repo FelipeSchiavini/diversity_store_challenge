@@ -27,10 +27,9 @@ export class PurchaseProductUseCase implements UseCase<PurchaseUseCaseInput, any
 		return await prisma.stockMovements.create({
 			data: {
 				productId: input.productId,
-				quantity: - input.quantity,
+				quantity: -input.quantity,
 				userId: CurrentUser.sub,
 			},
 		});
 	}
-
 }

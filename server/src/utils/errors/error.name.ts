@@ -5,4 +5,5 @@ export enum ErrorName {
 	InvalidInputError = 'InvalidInput',
 	UserAlreadyExistsError = 'UserAlreadyExists',
 	UnauthorizedError = 'Unauthorized',
+	StockCantBeNegativeError = 'StockCantBeNegative',
 }

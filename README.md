@@ -12,6 +12,7 @@ The API was developed using Node.js and Express, leveraging the Routing-Controll
 2. Copy `sample.env` to `.env`
 3. Run `npm install`
 4. Run `npm run dev`
+5. There are only tests written for the API Use cases. To run these tests, you can simply execute the command `npm test`.
 
 ### Database
 The project was developed using Prisma as the Object-Relational Mapping (ORM) tool and SQLite as the database for the development environment. This combination provides an efficient and simplified approach to handling data persistence during the development phase.

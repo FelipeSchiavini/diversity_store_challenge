@@ -1,13 +1,7 @@
 'use client'
 
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
-import useToast from '@/hooks/use-toast'
-import { ProductCard } from './product-card.component'
-import { useGet } from '@/hooks/use-api-get'
-import { Role } from '@/utils/types'
+import { Dispatch, SetStateAction } from 'react'
 import { Spinner } from './spinner.component'
-import { Toast } from 'react-toastify/dist/components'
-import { data } from 'autoprefixer'
 
 export interface Product {
   id: string
@@ -26,10 +20,6 @@ interface PaginationProps {
 
 export const Pagination: React.FC<PaginationProps> = (props) => {
   const { isLoading, updatePagination, pagination, totalOfPages } = props
-  console.log(
-    '🚀 ~ file: pagination.component.tsx:29 ~ totalOfPages:',
-    totalOfPages,
-  )
 
   return (
     <>

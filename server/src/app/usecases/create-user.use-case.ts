@@ -12,7 +12,6 @@ type CreateUserUseCaseInput = Omit<User, 'id' | 'role'>;
 @Service()
 export class CreateUserUseCase implements UseCase<CreateUserUseCaseInput, any> {
 	async exec(input: CreateUserUseCaseInput) {
-
 		const { password, login } = input;
 
 		await this.verifyIfUserLoginAlreadyExists(login);

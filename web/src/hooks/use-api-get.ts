@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Cookies from 'js-cookie'
-import { AxiosError, AxiosResponse } from 'axios'
+import { AxiosError } from 'axios'
 import { api } from '@/lib/api'
 import { handleWithErrorName } from '@/utils/error.message'
 
@@ -29,7 +29,7 @@ export const useGet = <T>(input: { onError?: (message: string) => void }) => {
     } catch (error) {
       setIsLoading(false)
       if (error instanceof AxiosError) {
-        console.log('ERROR: use-api-post.ts:37 ~ postRequest ~ error:', error)
+        console.error('ERROR: use-api-post.ts:37 ~ postRequest ~ error:', error)
         const message = handleWithErrorName(error?.response?.data?.name)
         input?.onError?.(message)
       }

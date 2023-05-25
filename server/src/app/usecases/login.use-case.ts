@@ -16,7 +16,6 @@ interface LoginUseCaseResponse {
 @Service()
 export class LoginUseCase implements UseCase<LoginUseCaseInput, LoginUseCaseResponse> {
 	async exec(input: LoginUseCaseInput): Promise<LoginUseCaseResponse> {
-
 		const { login, password } = userLoginParser(input);
 
 		const user = await getUserByLoginQuery(login);
@@ -44,7 +43,5 @@ export class LoginUseCase implements UseCase<LoginUseCaseInput, LoginUseCaseResp
 		);
 
 		return { token };
-
-
 	}
 }

@@ -14,7 +14,7 @@ export class UserController {
 	}
 
 	@Post(LoginUrl)
-	async login(@Body() input: {data: { login: string; password: string }}) {
+	async login(@Body() input: { data: { login: string; password: string } }) {
 		return await Container.get(LoginUseCase).exec(input.data);
 	}
 }

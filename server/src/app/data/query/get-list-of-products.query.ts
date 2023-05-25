@@ -12,4 +12,5 @@ export const getListOfProductsQuery = async (skip: number = 0) => {
 			},
 		},
 	});
-};20
+};
+20;
