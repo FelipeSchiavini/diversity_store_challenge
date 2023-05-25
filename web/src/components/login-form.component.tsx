@@ -22,6 +22,7 @@ interface AuthDataRequest {
 
 export const LoginFormComponent = () => {
   const router = useRouter()
+
   const formRef = useRef<HTMLFormElement>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const { setUser } = useAuth()

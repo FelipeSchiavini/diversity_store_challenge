@@ -12,6 +12,7 @@ import { createProductParser, createStockMovimentsParser, productIdParser } from
 import { CreateProductUrl, ProductListUrl, ProductPathUrl, PurchaseProductUrl, UpdateStockProductUrl } from '../../utils/routes';
 import { Role } from '../../utils/@types/role.types';
 import { TokenUser } from '../../utils/@types/user.types';
+import { AddProductToStockUseCase } from '../usecases/add-product.use-case';
 
 @Service()
 @JsonController(ProductPathUrl)
@@ -55,6 +56,6 @@ export class ProductController {
 	@Post(UpdateStockProductUrl)
 	async addStockProduct(@Body() input: CreateStockMovementsInput,  @CurrentUser() user: TokenUser)  {
 		const movement = createStockMovimentsParser(input);
-		return '';
+		return await Container.get(AddProductToStockUseCase).exec(movement, user);
 	}
 }

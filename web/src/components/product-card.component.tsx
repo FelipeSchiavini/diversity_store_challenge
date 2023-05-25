@@ -40,16 +40,24 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const texts = config[role]
 
   const handlePlusCircleClick = () => {
-    if (quantity <= quantityInCart) {
+    if (quantity <= quantityInCart && role === Role.Client) {
       return
     }
     setQuantityInCart(quantityInCart + 1)
   }
 
   const handleMinusCircleClick = () => {
-    if (quantityInCart === 0) {
+    if (quantityInCart === 0 && role === Role.Client) {
       return
     }
+    if (
+      quantityInCart < 0 &&
+      -quantity === quantityInCart &&
+      role === Role.Admin
+    ) {
+      return
+    }
+
     setQuantityInCart(quantityInCart - 1)
   }
 
@@ -59,7 +67,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       return
     }
 
-    await post(texts.buttonText, {
+    await post(texts.path, {
       productId: id,
       quantity: quantityInCart,
     })
@@ -69,7 +77,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   }
 
   return (
-    <div className="h-[370px] w-52 items-center justify-center rounded border border-solid border-gray-600 bg-gray-800 p-3">
+    <div className="h-[370px] w-52 items-center justify-center rounded border border-solid border-gray-600 bg-gray-800 bg-[url(../assets/bg-stars.svg)] bg-cover p-3">
       <Toast />
       <div className="flex h-full  flex-col justify-between">
         <div className="space-y-3">
@@ -108,7 +116,7 @@ const config = {
     buttonText: 'Add To Stock',
     path: '/product/add',
     errorMessage: 'Add the product before!',
-    sucessMessage: 'Product added to stock!',
+    sucessMessage: 'Stock updated successfully! 👏',
   },
   client: {
     buttonText: 'Purchase',
